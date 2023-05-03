@@ -18,6 +18,10 @@
 .env.test.local
 .env.production.local
 
+#img (should be provided be API later, just for now...)
+src/cards-img/
+
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
