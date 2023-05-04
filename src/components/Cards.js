@@ -1,20 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-//import { styled } from '@mui/material/styles';
-//import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Card from '@mui/joy/Card';
-//import CardImg from '/cards-img/m00'
-
-/*const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));*/
 
 
 function Cards() {
@@ -50,7 +39,7 @@ function Cards() {
         <Card variant="outlined" ratio="7/12" sx={{ maxWidth: 350, maxHeigth: 600 }}>
       <AspectRatio ratio="7/12">
         <div>
-          <img src={require(`../cards-img/${card.img}`)} alt={card.name}></img>   
+          <img src={require(`../cards-img/${card.img}`)} alt={card.name} key={card.name}></img>   
         </div>
       </AspectRatio>
     </Card>
