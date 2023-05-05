@@ -4,6 +4,11 @@ import { useEffect } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Card from '@mui/joy/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/joy/Box';
 
 
 function Cards() {
@@ -35,14 +40,30 @@ function Cards() {
     {cards && 
       cards.map((card) => {
       return (
-    <Grid xs={12} sm={6} md={4} lg={3} xl={2}>
-        <Card variant="outlined" ratio="7/12" sx={{ maxWidth: 350, maxHeigth: 600 }}>
-      <AspectRatio ratio="7/12">
-        <div>
-          <img src={require(`../cards-img/${card.img}`)} alt={card.name} key={card.name}></img>   
-        </div>
-      </AspectRatio>
+    <Grid className='flip-card' xs={12} sm={6} md={4} lg={3} xl={2} key={card.name}>
+      
+        <Card className='flip-card-inner' variant="outlined" ratio="7/12" >
+          
+          <img className = 'flipcard-front' src={require(`../cards-img/${card.img}`)} alt={card.name}></img>   
+    
+      
+      <div className='flip-card-back'>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {card.arcana}
+        </Typography>
+        <Typography variant="h5" component="div">
+          {card.name}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {card.keywords.map(keyword => (<div>{keyword}</div>))} 
+        </Typography>
+        <Typography variant="body2">
+          Archetype: {card.Archetype}
+        </Typography>
+        <Button size="small">Learn More</Button>
+      </div>
     </Card>
+    
         </Grid>)
       })}
       </>
