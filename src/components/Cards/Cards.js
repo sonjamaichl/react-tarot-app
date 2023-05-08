@@ -2,13 +2,16 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
-import AspectRatio from '@mui/joy/AspectRatio';
+//import AspectRatio from '@mui/joy/AspectRatio';
 import Card from '@mui/joy/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+//import CardActions from '@mui/material/CardActions';
+//import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/joy/Box';
+//import Box from '@mui/joy/Box';
+import Modal from './Modal'
+
+
 
 
 function Cards() {
@@ -34,6 +37,10 @@ function Cards() {
     getCards();
   }, []); //function will only run once at initial render, change dependency array if other behavior is needed
    
+  //eventHandler for 'Learn More' Button (opens/displays modal)
+function handleClick(){
+  return <Modal name='TAROT'/>;
+}
 
   return (
     <>
@@ -44,7 +51,7 @@ function Cards() {
       
         <Card className='flip-card-inner' variant="outlined" ratio="7/12" >
           
-          <img className = 'flipcard-front' src={require(`../cards-img/${card.img}`)} alt={card.name}></img>   
+          <img className = 'flipcard-front' src={require(`../Cards/cards-img/${card.img}`)} alt={card.name}></img>   
     
       
       <div className='flip-card-back'>
@@ -60,7 +67,7 @@ function Cards() {
         <Typography variant="body2">
           Archetype: {card.Archetype}
         </Typography>
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={handleClick}>Learn More</Button>
       </div>
     </Card>
     

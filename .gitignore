@@ -19,7 +19,7 @@
 .env.production.local
 
 #img (should be provided be API later, just for now...)
-src/cards-img/
+/src/components/Cards/cards-img/
 
 
 npm-debug.log*

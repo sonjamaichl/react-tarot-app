@@ -1,12 +1,12 @@
 import React from 'react'
-import Searchbar from './Searchbar'
-import GridContainer from './GridContainer'
+import Searchbar from './Searchbar/Searchbar'
+import CardsContainer from './Cards/CardsContainer'
 
 function App() {
   return (
     <>
     <Searchbar />
-    <GridContainer />   {/* should there be a Main Component and GridContainer inside?? or just one component for gridcontainer & items/cards??*/}
+    <CardsContainer />   {/* should there be a Main Component and GridContainer inside?? or just one component for gridcontainer & items/cards??*/}
     </> 
   )
 }
