@@ -70,9 +70,9 @@ function handleClick(){
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {card.keywords.map(keyword => (<div>{keyword}</div>))} 
         </Typography>
-        <Typography variant="body2">
+        {(card.arcana === 'Major Arcana') && <Typography variant="body2"> 
           Archetype: {card.Archetype}
-        </Typography>
+        </Typography>}                          {/*only major arcana cards have archetype property!*/}
         <Button size="small" onClick={handleClick}>Learn More</Button>
       </div>
     </Card>

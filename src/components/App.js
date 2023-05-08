@@ -8,7 +8,7 @@ function App() {
     <>
     <Searchbar />
     <CardsContainer />   {/* should there be a Main Component and GridContainer inside?? or just one component for gridcontainer & items/cards??*/}
-    <Pagination />
+    <Pagination page={pageNum}/>
     </> 
   );
 };
