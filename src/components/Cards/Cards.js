@@ -14,7 +14,12 @@ import Modal from './Modal'
 
 
 
-function Cards() {
+function Cards(props) {
+
+  console.log('These are the props at Cards Component:');
+  console.log(props);
+  console.log('This is the pageNum:');
+  console.log(props.pageNum);
   //declaring a variable for the cards with a useState so that changing the value will rerender the component
   let [cards, setCards] = useState([]);
   
@@ -27,6 +32,7 @@ function Cards() {
     const response = await fetch(url);
      const result = await response.json();
      setCards(result.cards) //an array of card objects
+     console.log('These are all the cards:')
      console.log(cards);
     } catch (error){
       console.log(error);
@@ -44,8 +50,8 @@ function handleClick(){
 
   return (
     <>
-    {cards && 
-      cards.map((card) => {
+    {cards &&
+      cards.map((card, i) => {   //for pagination: check if i is greater than or equal to pageNum-1*12 and less than pageNum*12 (for 12 cards per page)
       return (
     <Grid className='flip-card' xs={12} sm={6} md={4} lg={3} xl={2} key={card.name}>
       
