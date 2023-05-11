@@ -9,7 +9,6 @@ import Card from '@mui/joy/Card';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 //import Box from '@mui/joy/Box';
-import Modal from './Modal'
 
 
 
@@ -43,10 +42,6 @@ function Cards(props) {
     getCards();
   }, []); //function will only run once at initial render, change dependency array if other behavior is needed
    
-  //eventHandler for 'Learn More' Button (opens/displays modal)
-function handleClick(){
-  return <Modal name='TAROT'/>;
-}
 
   return (
     <>
@@ -73,7 +68,7 @@ function handleClick(){
         {(card.arcana === 'Major Arcana') && <Typography variant="body2"> 
           Archetype: {card.Archetype}
         </Typography>}                          {/*only major arcana cards have archetype property!*/}
-        <Button size="small" onClick={handleClick}>Learn More</Button>
+        <Button size="small">Learn More</Button>
       </div>
     </Card>
     
