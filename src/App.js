@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Navbar from './components/Navbar/Navbar';
 import Wiki from './views/Wiki';
 import Home from './views/Home';
 import Reading from './views/Reading';
@@ -8,8 +9,9 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    //Navbar here
-
+    <>
+    <Navbar />
+      
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/wiki" element={<Wiki />} />
@@ -17,6 +19,7 @@ function App() {
       <Route path="/reading" element={<Reading />} />
       <Route path="*" element={<NotFound404 />} />
     </Routes>
+    </>
   );
 };
 
