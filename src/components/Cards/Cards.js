@@ -8,6 +8,7 @@ import Card from '@mui/joy/Card';
 //import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { NavLink } from 'react-router-dom';
 //import Box from '@mui/joy/Box';
 
 
@@ -68,7 +69,7 @@ function Cards(props) {
         {(card.arcana === 'Major Arcana') && <Typography variant="body2"> 
           Archetype: {card.Archetype}
         </Typography>}                          {/*only major arcana cards have archetype property!*/}
-        <Button size="small">Learn More</Button>
+              <Button component={NavLink} to={card.id} size="small">Learn More</Button>
       </div>
     </Card>
     
