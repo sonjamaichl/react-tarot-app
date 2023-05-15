@@ -18,22 +18,22 @@ function Cards(props) {
 
   console.log('These are the props at Cards Component:');
   console.log(props);
-  console.log('This is the pageNum:');
-  console.log(props.pageNum);
+
   //declaring a variable for the cards with a useState so that changing the value will rerender the component
   let [cards, setCards] = useState([]);
   
   const getCards = async () => {
    //fetching data from tarot API
-   const url = 'http://localhost:3000/allcards'; //fetching from own API => make sure it actually runs on localhost 3000!!
-   
+   const url = props.searchInput === ''? 'http://localhost:3000/allcards' : `http://localhost:3000/name/${props.searchInput.toLowerCase()}`; //fetching from own API => make sure it actually runs on localhost 3000!!
+   console.log(url);
+
    try{  
     console.log('fetching now')
     const response = await fetch(url);
      const result = await response.json();
-     setCards(result.cards) //an array of card objects
-     console.log('These are all the cards:')
-     console.log(cards);
+     setCards(props.searchInput === '' ? result.cards : result) //cards is now an array of card objects
+     //when fetching from endpoint /allcards we get an object with a property of cards which contains the array of cards, so we use result.cards
+     //when fetching from endpoint /name/:searchInput we get an array of card objects we can use directly!
     } catch (error){
       console.log(error);
     }
@@ -41,7 +41,7 @@ function Cards(props) {
 
   useEffect(() => {
     getCards();
-  }, []); //function will only run once at initial render, change dependency array if other behavior is needed
+  }, [props.searchInput]); //function should run when opening the page & whenever the value of the searchInput changes
    
 
   return (
@@ -53,7 +53,7 @@ function Cards(props) {
       
         <Card className='flip-card-inner' variant="outlined" ratio="7/12" >
           
-          <img className = 'flipcard-front' src={require(`../Cards/cards-img/${card.img}`)} alt={card.name}></img>   
+          <img className = 'flipcard-front' src={card.img_drive} alt={card.name}></img>   
     
       
       <div className='flip-card-back'>

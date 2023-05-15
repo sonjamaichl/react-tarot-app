@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useState } from 'react';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -48,12 +49,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-export default function Searchbar() {
+export default function Searchbar({handleSearchInput}) {
+
+  //get the final input value when user has pressed enter using handleSearchInput function from props
+  let userInput = '';
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      userInput = e.target.value;
+    }
+    console.log(userInput);
+    handleSearchInput(userInput);
+  }
+  
+
   return (
     <Box sx={{ flexGrow: 1, mb: '4rem' }} className="marginBottom2">
       <AppBar position="static">
         <Toolbar>
-          <Search>
+          <Search
+              onKeyDown={handleKeyDown}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
