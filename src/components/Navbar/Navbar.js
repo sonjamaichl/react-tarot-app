@@ -25,8 +25,13 @@ interface Props {
 
 
 const drawerWidth = 240;
-const navItems = ["Home", "Wiki", "Reading"];
-const navLinks = ["/", "/wiki", "/reading"];
+const navItems = [
+  { "navText": "Home", "navLink": "/" },
+  { "navText": "Wiki", "navLink" : "/wiki" },
+  { "navText": "Reading", "navLink": "/reading" }
+];
+
+const title = "Tarot App";
 
 export default function Navbar(props: Props) {
   const { window } = props;
@@ -39,14 +44,14 @@ export default function Navbar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center"}}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        {title}
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item, i) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton component={NavLink} to={navLinks[i]} sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+        {navItems.map((item) => (
+          <ListItem key={item.navText} disablePadding>
+            <ListItemButton component={NavLink} to={item.navLink} sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.navText} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -76,12 +81,12 @@ export default function Navbar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Tarot App
+            {title}
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item, i) => (
-              <Button key={item} component={NavLink} to={navLinks[i]} sx={{ color: "#fff" }}>
-                {item}
+            {navItems.map((item) => (
+              <Button key={item.navText} component={NavLink} to={item.navLink} sx={{ color: "#fff" }}>
+                {item.navText}
               </Button>
             ))}
           </Box>
