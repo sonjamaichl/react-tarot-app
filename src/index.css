@@ -7,6 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "Dream Avenue";
+  /*Can be any text*/
+  src: local("FontsFree-Net-Dream-Avenue"),
+    url("./fonts/FontsFree-Net-Dream-Avenue.ttf") format("truetype");
+}
+
+h1 {
+  font-family: "Dream Avenue";
+  font-size: 2.5rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -56,5 +68,13 @@ code {
   width: 92%;
   height: 95%;
   margin: 0;
+}
+
+.details-card{
+  max-width: 350px;   /*because 350x600 is the original image size*/
+}
+
+.active {
+  color: purple;
 }
 
