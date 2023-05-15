@@ -10,11 +10,17 @@ function Wiki() {
   function handleSearchInput(searchInput) {
     setSearchInput(searchInput);
   }
+
+  let [searchBy, setSearchBy] = useState('name');   //if user chooses nothing search will be by name by default
+  function handleSelect(searchBy) {
+    setSearchBy(searchBy);
+  }
+
   return (
     <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-      <Searchbar handleSearchInput={handleSearchInput} />
-      <CardsContainer searchInput={searchInput} />
+      <Searchbar handleSearchInput={handleSearchInput} handleSelect={handleSelect} />
+      <CardsContainer searchInput={searchInput} searchBy={searchBy} />
       <Pagination />
     </Box>
   );

@@ -24,7 +24,7 @@ function Cards(props) {
   
   const getCards = async () => {
    //fetching data from tarot API
-   const url = props.searchInput === ''? 'http://localhost:3000/allcards' : `http://localhost:3000/name/${props.searchInput.toLowerCase()}`; //fetching from own API => make sure it actually runs on localhost 3000!!
+   const url = props.searchInput === ''? 'http://localhost:3000/allcards' : `http://localhost:3000/${props.searchBy}/${props.searchInput.toLowerCase()}`; //fetching from own API => make sure it actually runs on localhost 3000!!
    console.log(url);
 
    try{  
@@ -41,7 +41,7 @@ function Cards(props) {
 
   useEffect(() => {
     getCards();
-  }, [props.searchInput]); //function should run when opening the page & whenever the value of the searchInput changes
+  }, [props.searchInput, props.searchBy]); //function should run when opening the page & whenever the value of the searchInput changes
    
 
   return (

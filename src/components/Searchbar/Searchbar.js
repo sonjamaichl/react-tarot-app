@@ -5,7 +5,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from 'react';
+//import { useState } from 'react';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-export default function Searchbar({handleSearchInput}) {
+export default function Searchbar({handleSearchInput, handleSelect}) {
 
   //get the final input value when user has pressed enter using handleSearchInput function from props
   let userInput = '';
@@ -60,12 +64,35 @@ export default function Searchbar({handleSearchInput}) {
     console.log(userInput);
     handleSearchInput(userInput);
   }
-  
 
+  let searchParam = 'name';  //again setting 'name' as default to search by
+  const handleChange = (e) => {
+    searchParam = e.target.value;
+    console.log(e.target.value);
+    handleSelect(searchParam);
+  };
+  
   return (
     <Box sx={{ flexGrow: 1, mb: '4rem' }} className="marginBottom2">
       <AppBar position="static">
         <Toolbar>
+
+         <Box sx={{ minWidth: 150 }}> 
+        <FormControl fullWidth>
+        <InputLabel id="search">Search by</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={userInput}
+          label="Search by"
+          onChange={handleChange}
+        >
+          <MenuItem value="name">Name</MenuItem>
+          <MenuItem value="meaning">Meaning</MenuItem>
+        </Select>
+            </FormControl>
+            </Box>
+
           <Search
               onKeyDown={handleKeyDown}>
             <SearchIconWrapper>
@@ -75,7 +102,8 @@ export default function Searchbar({handleSearchInput}) {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+        </Search>
+        
         </Toolbar>
       </AppBar>
     </Box>

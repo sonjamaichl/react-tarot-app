@@ -9,7 +9,7 @@ export default function CardsContainer(props) {
     <Box sx={{ flexGrow: 1, m: '2rem' }}>
       <Grid container spacing={2} >
         {/*insert grid items = cards here */}
-        <Cards searchInput={props.searchInput}/>
+        <Cards searchInput={props.searchInput} searchBy={props.searchBy} />
       </Grid>
     </Box>
   );
