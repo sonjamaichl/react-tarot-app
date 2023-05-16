@@ -27,7 +27,7 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
   { "navText": "Home", "navLink": "/" },
-  { "navText": "Wiki", "navLink" : "/wiki" },
+  { "navText": "Browse", "navLink" : "/browse" },
   { "navText": "Reading", "navLink": "/reading" }
 ];
 

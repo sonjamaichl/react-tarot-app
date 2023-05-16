@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
-import Wiki from './views/Wiki';
+import Browse from './views/Browse';
 import Home from './views/Home';
 import Reading from './views/Reading';
 import Details from './views/Details';
@@ -14,8 +14,8 @@ function App() {
       
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/wiki" element={<Wiki />} />
-      <Route path="/wiki/:id" element={<Details />} />
+      <Route path="/browse" element={<Browse />} />
+      <Route path="/card/:id" element={<Details />} />
       <Route path="/reading" element={<Reading />} />
       <Route path="*" element={<NotFound404 />} />
     </Routes>

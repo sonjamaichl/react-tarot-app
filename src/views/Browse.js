@@ -21,7 +21,6 @@ function Wiki() {
         <Toolbar />
       <Searchbar handleSearchInput={handleSearchInput} handleSelect={handleSelect} />
       <CardsContainer searchInput={searchInput} searchBy={searchBy} />
-      <Pagination />
     </Box>
   );
 };
