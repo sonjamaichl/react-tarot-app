@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+//import { useState, useEffect } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 //import AspectRatio from '@mui/joy/AspectRatio';
 import Card from '@mui/joy/Card';
@@ -14,35 +13,12 @@ import { NavLink } from 'react-router-dom';
 
 
 
-function Cards(props) {
+function Cards({cards}) {
 
-  console.log('These are the props at Cards Component:');
-  console.log(props);
+  //console.log('These are the props at Cards Component:');
+  //console.log(props);
 
-  //declaring a variable for the cards with a useState so that changing the value will rerender the component
-  let [cards, setCards] = useState([]);
   
-  const getCards = async () => {
-   //fetching data from tarot API
-   const url = props.searchInput === ''? 'http://localhost:3000/allcards' : `http://localhost:3000/${props.searchBy}/${props.searchInput.toLowerCase()}`; //fetching from own API => make sure it actually runs on localhost 3000!!
-   console.log(url);
-
-   try{  
-    console.log('fetching now')
-    const response = await fetch(url);
-     const result = await response.json();
-     setCards(props.searchInput === '' ? result.cards : result) //cards is now an array of card objects
-     //when fetching from endpoint /allcards we get an object with a property of cards which contains the array of cards, so we use result.cards
-     //when fetching from endpoint /name/:searchInput we get an array of card objects we can use directly!
-    } catch (error){
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getCards();
-  }, [props.searchInput, props.searchBy]); //function should run when opening the page & whenever the value of the searchInput changes
-   
 
   return (
     <>

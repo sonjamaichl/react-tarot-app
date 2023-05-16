@@ -10,6 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import NativeSelect from '@mui/material/NativeSelect';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -73,26 +74,30 @@ export default function Searchbar({handleSearchInput, handleSelect}) {
   };
   
   return (
+    <>
+  {/*SELECT SEARCH BY OPTIONS*/}
+       <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth onChange={handleChange}>
+        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          Search by
+        </InputLabel>
+        <NativeSelect
+          defaultValue='name'
+          inputProps={{
+            name: 'search-by',
+            id: 'uncontrolled-native',
+          }}
+        >
+          <option value='name'>Name</option>
+          <option value='meaning'>Meaning</option>
+        </NativeSelect>
+      </FormControl>
+      </Box>
+
+{/*SEARCH INPUT*/}      
     <Box sx={{ flexGrow: 1, mb: '4rem' }} className="marginBottom2">
       <AppBar position="static">
         <Toolbar>
-
-         <Box sx={{ minWidth: 150 }}> 
-        <FormControl fullWidth>
-        <InputLabel id="search">Search by</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={userInput}
-          label="Search by"
-          onChange={handleChange}
-        >
-          <MenuItem value="name">Name</MenuItem>
-          <MenuItem value="meaning">Meaning</MenuItem>
-        </Select>
-            </FormControl>
-            </Box>
-
           <Search
               onKeyDown={handleKeyDown}>
             <SearchIconWrapper>
@@ -103,9 +108,18 @@ export default function Searchbar({handleSearchInput, handleSelect}) {
               inputProps={{ "aria-label": "search" }}
             />
         </Search>
-        
         </Toolbar>
       </AppBar>
-    </Box>
+      </Box>
+
+      </>
   );
 }
+
+
+
+
+
+
+ 
+
