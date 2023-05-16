@@ -5,7 +5,7 @@ function Reading() {
     return (
         <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        <h1>Reading</h1>
+        <h1>READING</h1>
         <p>Get your free online Tarot Reading now!</p>
         </Box>
   )
