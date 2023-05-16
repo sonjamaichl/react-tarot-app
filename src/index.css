@@ -19,6 +19,14 @@ h1 {
   font-size: 2.5rem;
 }
 
+h2, h3 {
+  font-family: "Dream Avenue";
+}
+
+.custom-font-dream {
+  font-family: "Dream Avenue";
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
