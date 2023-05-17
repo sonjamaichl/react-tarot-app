@@ -2,6 +2,7 @@ import { Box, Toolbar } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/joy/Card';
 import randomBoolean from '../utils/randomBoolean';
+import backImg from '../utils/backOfCardsImgSrc';
 
 
 function Reading1Card() {
@@ -30,16 +31,24 @@ function Reading1Card() {
   const upright = randomBoolean();  //using return value of randomBoolean to decide if the card is upright or reversed
   console.log(upright);
 
+  let [clicked, setClicked] = useState(false);
+  function handleClick() {
+    console.log('card was clicked, now the img src should change...');
+    setClicked (true);
+  }
+
+  //let h2text = upright ? card.name : `${card.name} reversed`;
+
     return (
     <>
       {card &&
     <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
           <h1>1 CARD READING</h1>
-          <h2>Your card: {upright? card.name : `${card.name} reversed`}</h2>    
+            <h2>{clicked? upright? `Your card: ${card.name}` : `Your card: ${card.name} reversed` : 'Click on the card to see it...'}</h2>    
         
             <Card className="details-card" variant="outlined" ratio="7/12" sx={{ m: 2 }}>
-                  <img className={!upright && 'reversed'} src={card.img_drive} alt={card.name}></img>
+              <img className={!upright && 'reversed'} src={clicked ? card.img_drive : backImg} alt={clicked ? card.name : "back side of tarot card"} onClick={handleClick}></img>
                 </Card>
 
         </Box>
@@ -49,3 +58,5 @@ function Reading1Card() {
 }
 
 export default Reading1Card
+
+//src={card.img_drive} alt={card.name}
