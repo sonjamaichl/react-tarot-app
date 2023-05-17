@@ -86,3 +86,7 @@ code {
   color: purple;
 }
 
+.reversed {
+  transform: scale(-1, -1);
+}
+

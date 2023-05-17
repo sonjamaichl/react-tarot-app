@@ -1,6 +1,7 @@
 import { Box, Toolbar } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Card from '@mui/joy/Card';
+import randomBoolean from '../utils/randomBoolean';
 
 
 function Reading1Card() {
@@ -26,16 +27,19 @@ function Reading1Card() {
     getCardById();
   }, []); //function will only run once at initial render, change dependency array if other behavior is needed
 
+  const upright = randomBoolean();  //using return value of randomBoolean to decide if the card is upright or reversed
+  console.log(upright);
+
     return (
     <>
       {card &&
     <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
           <h1>1 CARD READING</h1>
-          <h2>Your card: {card.name}</h2>
+          <h2>Your card: {upright? card.name : `${card.name} reversed`}</h2>    
         
-                <Card className="details-card" variant="outlined" ratio="7/12" sx={{m: 2}}>
-                  <img src={card.img_drive} alt={card.name}></img>
+            <Card className="details-card" variant="outlined" ratio="7/12" sx={{ m: 2 }}>
+                  <img className={!upright && 'reversed'} src={card.img_drive} alt={card.name}></img>
                 </Card>
 
         </Box>
