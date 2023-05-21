@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import Reading1Card from './views/Reading1Card';
 import Reading3Spread from './views/Reading3Spread.js';
 import LogIn from './views/LogIn';
+import SignUp from './views/SignUp';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/reading/1" element={<Reading1Card />} />
       <Route path="/reading/3" element={<Reading3Spread />} />
       <Route path="/login" element={<LogIn />} />
+       <Route path="/signup" element={<SignUp />} />
       <Route path="*" element={<NotFound404 />} />
     </Routes>
     </>
