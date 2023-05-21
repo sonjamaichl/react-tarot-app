@@ -17,9 +17,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
-#img (should be provided be API later, just for now...)
-/src/components/Cards/cards-img/
+# learning
+firebase_tut.js
 
 
 npm-debug.log*
