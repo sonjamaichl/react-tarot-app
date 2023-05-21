@@ -8,6 +8,7 @@ import NotFound404 from './views/NotFound404';
 import { Routes, Route } from 'react-router-dom';
 import Reading1Card from './views/Reading1Card';
 import Reading3Spread from './views/Reading3Spread.js';
+import LogIn from './views/LogIn';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/reading" element={<Reading />} />
       <Route path="/reading/1" element={<Reading1Card />} />
       <Route path="/reading/3" element={<Reading3Spread />} />
+      <Route path="/login" element={<LogIn />} />
       <Route path="*" element={<NotFound404 />} />
     </Routes>
     </>

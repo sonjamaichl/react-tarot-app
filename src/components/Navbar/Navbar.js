@@ -28,7 +28,8 @@ const drawerWidth = 240;
 const navItems = [
   { "navText": "Home", "navLink": "/" },
   { "navText": "Browse", "navLink" : "/browse" },
-  { "navText": "Reading", "navLink": "/reading" }
+  { "navText": "Reading", "navLink": "/reading" },
+  { "navText": "Sign In", "navLink": "/login" }
 ];
 
 const title = "Tarot App";
