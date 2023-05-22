@@ -13,23 +13,19 @@ import { NavLink } from 'react-router-dom';
 
 
 
-function Cards({cards}) {
+function Cards({cards, pageNum}) {
 
-  //console.log('These are the props at Cards Component:');
-  //console.log(props);
-
-  
+  //for pagination: check if i is greater than or equal to pageNum-1*12 and less than pageNum*12 (for 12 cards per page)
 
   return (
     <>
-    {cards &&
-      cards.map((card, i) => {   //for pagination: check if i is greater than or equal to pageNum-1*12 and less than pageNum*12 (for 12 cards per page)
+    {cards.filter((card, i) => i>=(pageNum-1)*12 && i < (pageNum*12)).map((card) => {   
       return (
     <Grid className='flip-card' xs={12} sm={6} md={4} lg={3} xl={2} key={card.name}>
       
         <Card className='flip-card-inner' variant="outlined" ratio="7/12" >
           
-          <img className = 'flipcard-front' src={card.img_drive} alt={card.name}></img>   
+         <img className='flipcard-front' src={card.img_drive} alt={card.name}/> 
     
       
       <div className='flip-card-back'>
