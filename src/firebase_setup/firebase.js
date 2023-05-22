@@ -18,7 +18,7 @@ const firebaseConfig = {
 //https://www.makeuseof.com/react-app-firebase-connect/
 
 // initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 //init firestore services
 export const firestore = getFirestore(app)
