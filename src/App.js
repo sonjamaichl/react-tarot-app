@@ -11,7 +11,6 @@ import Reading3Spread from './views/Reading3Spread.js';
 import LogIn from './views/LogIn';
 import SignUp from './views/SignUp';
 import { AuthContextProvider } from './firebase_setup/AuthContext';
-import LogOutPage from './views/LogOutPage';
 
 function App() {
   return (
@@ -30,7 +29,6 @@ function App() {
       <Route path="/reading/3" element={<Reading3Spread />} />
       <Route path="/login" element={<LogIn />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/logout" element={<LogOutPage />} />
       <Route path="*" element={<NotFound404 />} />
       </Routes>
         

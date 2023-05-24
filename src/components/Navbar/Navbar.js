@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../firebase_setup/AuthContext";
+import LogOutModal from "../UserLog/LogOutModal";
 
 
 
@@ -23,17 +24,25 @@ export default function Navbar(props) {
 
 const drawerWidth = 240;
 
-const {user} = React.useContext(AuthContext);
-  const userLog = { text: user? "Log out": "Log In/Register", link: user? "/logout": "/login"}
+  const { user } = React.useContext(AuthContext);
+  const userLog = { text: user? "LOG OUT": "LOG IN/SIGN UP", link: user? "#": "/login"}
 
 const navItems = [
-  { "navText": "Home", "navLink": "/" },
-  { "navText": "Browse", "navLink" : "/browse" },
-  { "navText": "Reading", "navLink": "/reading" },
+  { "navText": "HOME", "navLink": "/" },
+  { "navText": "BROWSE", "navLink" : "/browse" },
+  { "navText": "READING", "navLink": "/reading" },
   { "navText": userLog.text, "navLink": userLog.link }
 ];
 
-const title = "Tarot App";
+  const title = "Tarot App";
+  
+  const [logOutOpen, setLogOutOpen] = React.useState(false);
+  const handleLogOutOpen = () => {
+    setLogOutOpen(true);
+    console.log('log out modal opened');
+  };
+  const handleLogOutClose = () => setLogOutOpen(false);
+
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -41,7 +50,7 @@ const title = "Tarot App";
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+    
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center"}}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -51,9 +60,10 @@ const title = "Tarot App";
       <List>
         {navItems.map((item) => (
           <ListItem key={item.navText} disablePadding>
-            <ListItemButton component={NavLink} to={item.navLink} sx={{ textAlign: "center" }}>
+            {item.navText === "LOG OUT" ? <><ListItemButton component={Button} onClick={handleLogOutOpen} sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.navText} /></ListItemButton><LogOutModal open={logOutOpen} handleClose={handleLogOutClose} handleOpen={handleLogOutOpen} /></>: <ListItemButton component={NavLink} to={item.navLink} sx={{ textAlign: "center" }}>
               <ListItemText primary={item.navText} />
-            </ListItemButton>
+            </ListItemButton>}
           </ListItem>
         ))}
       </List>
@@ -85,11 +95,14 @@ const title = "Tarot App";
             {title}
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
+            {navItems.map((item) => (item.navText === "LOG OUT") ?
+              <Button key={item.navText} component={Button} onClick={handleLogOutOpen} sx={{ color: "#fff" }}>
+                {item.navText}
+              </Button> :
               <Button key={item.navText} component={NavLink} to={item.navLink} sx={{ color: "#fff" }}>
                 {item.navText}
               </Button>
-            ))}
+            )}
           </Box>
         </Toolbar>
       </AppBar>
