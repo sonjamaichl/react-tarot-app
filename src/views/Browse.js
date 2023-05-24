@@ -6,7 +6,7 @@ import { Box, Toolbar } from '@mui/material';
 import Pagination from '../components/Pagination/Pagination';
 
 
-function Wiki() {
+function Browse() {
 
   let [searchInput, setSearchInput] = useState('');
 
@@ -19,7 +19,6 @@ function Wiki() {
   let [pageNum, setPageNum] = useState('1');
 
 
-
   return (
     <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
@@ -30,4 +29,4 @@ function Wiki() {
   );
 };
 
-export default Wiki;
+export default Browse;
