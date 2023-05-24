@@ -17,7 +17,7 @@ function handleClick(event) {
   return (
     <Box sx={{display: 'flex', justifyContent: 'center', mb: 4}}>
     <Stack spacing={2}>
-      <Pagination count={Math.ceil(numOfCards/12)} color="primary" onClick={(event) => handleClick(event)}/>
+        {numOfCards !== 0 && <Pagination count={Math.ceil(numOfCards / 12)} color="primary" onClick={(event) => handleClick(event)} />}
     </Stack>
     </Box>
   );

@@ -7,7 +7,7 @@ import UserInfo from "./UserInfo";
 import { useState, useEffect } from 'react';
 
 
-export default function CardsContainer({searchInput, searchBy, loadingTrue, loadingFalse, getNumOfCards, pageNum, handlePageSelect}) {
+export default function CardsContainer({searchInput, searchBy, getNumOfCards, pageNum, handlePageSelect, changeIsLoading}) {
 
 //declaring a variable for the cards with a useState so that changing the value will rerender the component
   let [cards, setCards] = useState([]);
@@ -21,14 +21,14 @@ export default function CardsContainer({searchInput, searchBy, loadingTrue, load
 
    try{  
      console.log('fetching now')
-     loadingTrue();
+     changeIsLoading(true);
      handlePageSelect('1');
      const response = await fetch(url);
      const result = await response.json();
      setCards(searchInput === '' ? result.cards : result) //cards is now an array of card objects
      //when fetching from endpoint /allcards we get an object with a property of cards which contains the array of cards, so we use result.cards
      //when fetching from endpoint /name/:searchInput we get an array of card objects we can use directly!
-     loadingFalse();
+     changeIsLoading(false);
     } catch (error){
       console.log(error);
     }
