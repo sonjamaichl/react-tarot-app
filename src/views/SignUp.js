@@ -29,7 +29,7 @@ export default function SignUp() {
 
     return (
         <>
-            <LogInOrSignUp newUser handleSignUp={handleSignUp} />
+            <LogInOrSignUp newUser handleUserLog={handleSignUp} />
         </>
   );
 }

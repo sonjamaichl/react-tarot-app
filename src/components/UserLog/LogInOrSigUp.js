@@ -12,17 +12,17 @@ import { NavLink } from "react-router-dom";
 
 
 
-export default function LoginOrSignup({ newUser , handleSignUp } ) {
+export default function LoginOrSignup({ newUser , handleUserLog } ) {
 
   const handleSubmit = (event) => {
     event.preventDefault();         //default action would be to refresh the page!
     const data = new FormData(event.currentTarget);      //this works, but maybe better to use useForm hook instead?
-  console.log({
+  //console.log({
       //email: data.get("email"),
       //password: data.get("password"),
       //remember: data.get("remember")
-    });
-  handleSignUp({email: data.get("email"),
+   // });
+  handleUserLog({email: data.get("email"),
     password: data.get("password")});
   };
   
