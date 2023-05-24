@@ -1,12 +1,12 @@
 import React from "react";
-import LoginOrSignup from "../components/UserLog/LoginOrSignup";
+import LogInOrSignUp from "../components/UserLog/LogInOrSigUp";
 
 
 export default function LogIn() {
 
   return (
        <>
-          <LoginOrSignup newUser={false} />
+          <LogInOrSignUp newUser={false} />
         </>
   );
 }

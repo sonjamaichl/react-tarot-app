@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+//import FormControlLabel from "@mui/material/FormControlLabel";
+//import Checkbox from "@mui/material/Checkbox";
 //import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -18,8 +18,8 @@ export default function LoginOrSignup({ newUser , handleSignUp } ) {
     event.preventDefault();         //default action would be to refresh the page!
     const data = new FormData(event.currentTarget);      //this works, but maybe better to use useForm hook instead?
   console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+      //email: data.get("email"),
+      //password: data.get("password"),
       //remember: data.get("remember")
     });
   handleSignUp({email: data.get("email"),

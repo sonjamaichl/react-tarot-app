@@ -14,19 +14,27 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../firebase_setup/AuthContext";
 
+
+
+
+export default function Navbar(props) {
 
 const drawerWidth = 240;
+
+const {user} = React.useContext(AuthContext);
+  const userLog = { text: user? "Log out": "Log In/Register", link: user? "/logout": "/login"}
+
 const navItems = [
   { "navText": "Home", "navLink": "/" },
   { "navText": "Browse", "navLink" : "/browse" },
   { "navText": "Reading", "navLink": "/reading" },
-  { "navText": "Log In/Register", "navLink": "/login" }
+  { "navText": userLog.text, "navLink": userLog.link }
 ];
 
 const title = "Tarot App";
 
-export default function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

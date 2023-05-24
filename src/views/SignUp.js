@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { auth } from "../firebase_setup/firebase"
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import LoginOrSignup from "../components/UserLog/LoginOrSignup";
+import LogInOrSignUp from "../components/UserLog/LogInOrSigUp";
+import { AuthContext } from "../firebase_setup/AuthContext";
 
 
 export default function SignUp() {
   
 
-    let [user, setUser] = useState();
+    const {user} = useContext(AuthContext);
 
     function handleSignUp(user, form) {
-        setUser(user);
           
         //some firebase logic here to sign up new user:
         createUserWithEmailAndPassword(auth, user.email, user.password)
             .then((cred) => {
-                console.log('This is our new user: ');
-                console.log(cred.user);
+                //console.log('This is our new user: ');
+                //console.log(cred.user);
             }).catch((error) => {
                 console.log(error)
             });
+        console.log('firebase auth check:');
+        console.log(user);
     };
 
     
@@ -27,7 +29,7 @@ export default function SignUp() {
 
     return (
         <>
-            <LoginOrSignup newUser handleSignUp={handleSignUp} />
+            <LogInOrSignUp newUser handleSignUp={handleSignUp} />
         </>
   );
 }
